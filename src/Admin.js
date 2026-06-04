@@ -20,7 +20,7 @@ function Admin({ onLogout }) {
 
   // 🔥 Fetch businesses
   useEffect(() => {
-    fetch("http://localhost:5000/api/business")
+    fetch("https://local-shop-directory-backend.onrender.com/api/business")
       .then(res => res.json())
       .then(data => setBusinesses(data));
   }, []);
@@ -57,7 +57,7 @@ function Admin({ onLogout }) {
       return;
     }
 
-    await fetch(`http://localhost:5000/api/business/${selectedId}/add-offer`, {
+    await fetch(`https://local-shop-directory-backend.onrender.com/api/business/${selectedId}/add-offer`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

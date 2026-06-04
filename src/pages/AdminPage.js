@@ -37,7 +37,7 @@ function AdminPage() {
     try {
 
       const response = await fetch(
-        "http://localhost:5000/api/business/add",
+        "https://local-shop-directory-backend.onrender.com/api/business/add",
         {
           method: "POST",
 

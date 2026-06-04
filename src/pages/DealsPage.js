@@ -12,7 +12,7 @@ function DealsPage() {
 
   useEffect(() => {
 
-    fetch("http://localhost:5000/api/business/best-deals")
+    fetch("https://local-shop-directory-backend.onrender.com/api/business/best-deals")
 
       .then((res) => res.json())
 
