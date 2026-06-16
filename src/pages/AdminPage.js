@@ -9,30 +9,26 @@ function AdminPage() {
   const [offerTitle, setOfferTitle] = useState("");
   const [rating, setRating] = useState("");
   const [image, setImage] = useState("");
+  const [phone, setPhone] = useState("");
 
   const addBusiness = async () => {
 
-    const businessData = {
+const businessData = {
+  name: businessName,
+  location,
+  category,
+  phone,
+  rating: rating || 4.8,
+  image: image || "https://picsum.photos/800/600",
 
-      name: businessName,
-
-      location,
-
-      category,
-
-      rating,
-
-      image,
-
-      offers: [
-        {
-          title: offerTitle,
-          discount,
-          validTill: "2026-12-31"
-        }
-      ]
-
-    };
+  offers: [
+    {
+      title: offerTitle,
+      discount,
+      validTill: "2026-12-31"
+    }
+  ]
+};
 
     try {
 
@@ -122,6 +118,13 @@ function AdminPage() {
           className="w-full p-3 mb-6 rounded bg-gray-800"
           onChange={(e) => setImage(e.target.value)}
         />
+
+      <input
+  type="text"
+  placeholder="Phone Number"
+  className="w-full p-3 mb-4 rounded bg-gray-800"
+  onChange={(e) => setPhone(e.target.value)}
+/>
 
         <button
           onClick={addBusiness}

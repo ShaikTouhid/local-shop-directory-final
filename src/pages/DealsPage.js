@@ -9,6 +9,23 @@ function DealsPage() {
   const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
+  const deleteBusiness = async (id) => {
+  try {
+    await fetch(
+      `https://local-shop-directory-backend.onrender.com/api/business/delete/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
+
+    setFilteredDeals(
+      filteredDeals.filter((deal) => deal._id !== id)
+    );
+
+  } catch (err) {
+    console.log(err);
+  }
+};
 
   useEffect(() => {
 
@@ -164,18 +181,29 @@ function DealsPage() {
               🔥 {deal.discount}% OFF
             </p>
 
-            {/* OFFER */}
-            <p className="text-gray-300 mt-2">
-              {deal.offerTitle}
-            </p>
+      {/* OFFER */}
+<p className="text-gray-300 mt-2">
+  {deal.offerTitle}
+</p>
 
-          </div>
+<button
+  onClick={(e) => {
+    e.stopPropagation();
+    deleteBusiness(deal._id);
+  }}
+  className="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded mt-3 w-full"
+>
+  Delete
+</button>
+
+</div>
 
         ))}
 
       </div>
 
     </div>
+
   );
 }
 
